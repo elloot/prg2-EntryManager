@@ -1,13 +1,14 @@
 import java.sql.Timestamp;
 
 public class Edit {
-    private String content;
-    private Timestamp createdAt;
-    private User author;
+    private final String content;
+    private final Timestamp createdAt;
+    private final User author;
 
     public Edit(String content, User author) {
         this.content = content;
         this.author = author;
+        this.createdAt = EntryManager.getCurrentTime();
     }
 
     public String getContent() {
