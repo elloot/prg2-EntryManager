@@ -11,15 +11,15 @@ public class EntryManager {
         return entries;
     }
 
-    public void createEntry() {
-
+    public void createEntry(String content, User author) {
+        entries.add(new Entry(content, author));
     }
 
     public ArrayList<User> getUsers() {
         return users;
     }
 
-    public void createUser() {
-
+    public void createUser(String name, int id, String email, String password) {
+        users.add(new User(name, id, email, password));
     }
 }
