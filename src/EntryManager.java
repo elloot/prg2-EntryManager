@@ -1,3 +1,4 @@
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class EntryManager {
@@ -17,6 +18,10 @@ public class EntryManager {
 
     public ArrayList<User> getUsers() {
         return users;
+    }
+
+    public static Timestamp getCurrentTime() {
+        return new Timestamp(System.currentTimeMillis());
     }
 
     public void createUser(String name, int id, String email, String password) {
