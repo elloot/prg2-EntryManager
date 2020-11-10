@@ -6,14 +6,19 @@ public class EntryManager {
     private ArrayList<User> users;
 
     public EntryManager() {
+        users = new ArrayList<>();
+        entries = new ArrayList<>();
+        createUser("default", 0, "default", "default");
     }
 
     public ArrayList<Entry> getEntries() {
         return entries;
     }
 
-    public void createEntry(String content, User author) {
-        entries.add(new Entry(content, author));
+    public Entry createEntry(String content, User author) {
+        Entry entry = new Entry(content, author);
+        entries.add(entry);
+        return entry;
     }
 
     public ArrayList<User> getUsers() {
