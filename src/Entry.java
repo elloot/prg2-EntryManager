@@ -51,4 +51,9 @@ public class Entry {
     public ArrayList<Edit> getEdits() {
         return edits;
     }
+
+    @Override
+    public String toString() {
+        return "" + content + "\nAuthor: " +  author;
+    }
 }
