@@ -1,8 +1,42 @@
 import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
 
 public class View {
     private JPanel ViewPanel;
     private JTextArea entryContent;
     private JButton addButton;
-    private JComboBox comboBox1;
+    private JComboBox<User> userSelector;
+
+    public View(String title) {
+        JFrame frame = new JFrame(title);
+        frame.setPreferredSize(new Dimension(500, 700));
+        frame.setContentPane(this.getViewPanel());
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
+
+    public JComboBox<User> getUserSelector() {
+        return userSelector;
+    }
+
+    public String getEntryContent() {
+        return entryContent.getText();
+    }
+
+    public JButton getAddButton() {
+        return addButton;
+    }
+
+    public JPanel getViewPanel() {
+        return ViewPanel;
+    }
+
+    public void populateComboBox(ArrayList<User> users) {
+        for (User user : users) {
+            userSelector.addItem(user);
+        }
+    }
 }
