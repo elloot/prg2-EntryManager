@@ -3,8 +3,8 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class EntryManager implements Serializable {
-    private ArrayList<Entry> entries;
-    private ArrayList<User> users;
+    private final ArrayList<Entry> entries;
+    private final ArrayList<User> users;
 
     public EntryManager() {
         users = new ArrayList<>();
