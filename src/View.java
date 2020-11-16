@@ -10,6 +10,7 @@ public class View {
     private JButton addButton;
     private JComboBox<User> userSelector;
     private JButton saveToFileButton;
+    private JComboBox entrySelector;
 
     public View(String title) {
         JFrame frame = new JFrame(title);
@@ -41,7 +42,7 @@ public class View {
         return ViewPanel;
     }
 
-    public void populateComboBox(ArrayList<User> users) {
+    public void populateUserSelector(ArrayList<User> users) {
         for (User user : users) {
             userSelector.addItem(user);
         }

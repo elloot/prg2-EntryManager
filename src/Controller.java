@@ -14,7 +14,7 @@ public class Controller {
         entryManager = em;
         addAddListener();
         addSaveToFileListener();
-        view.populateComboBox(entryManager.getUsers());
+        view.populateUserSelector(entryManager.getUsers());
     }
 
     public Controller(View v, FileIO f) {
@@ -22,7 +22,7 @@ public class Controller {
         fileIO = f;
         entryManager = readEntryManagerFile();
         addAddListener();
-        view.populateComboBox(entryManager.getUsers());
+        view.populateUserSelector(entryManager.getUsers());
     }
 
     private Entry getUserEntry(int userID, int index) {
