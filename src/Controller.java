@@ -53,7 +53,7 @@ public class Controller {
     }
 
     private void addSaveToFileListener() {
-        view.getAddButton().addActionListener(e -> {
+        view.getSaveToFileButton().addActionListener(e -> {
             writeEntryManagerToFile();
         });
     }
@@ -77,11 +77,11 @@ public class Controller {
     private void addAddListener() {
         view.getAddButton().addActionListener(e -> {
             User author = getActiveUser();
-            System.out.println(addEntry(view.getEntryContent(), author));
+            System.out.println(addEntry(view.getEntryTitle(), view.getEntryContent(), author));
         });
     }
 
-    private Entry addEntry(String content, User author) {
-        return entryManager.createEntry(content, author);
+    private Entry addEntry(String title, String content, User author) {
+        return entryManager.createEntry(title, content, author);
     }
 }
