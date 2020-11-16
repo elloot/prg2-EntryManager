@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.event.ItemEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -25,14 +26,21 @@ public class Controller {
         addAddListener();
         addSaveToFileListener();
         view.populateUserSelector(entryManager.getUsers());
+        addUserSelectorListener();
         view.populateEntrySelector(getUserEntries(getSelectedUser().getId()));
         addEntrySelectorListener();
         showSelectedEntry();
     }
 
+    private void addUserSelectorListener() {
+        view.getUserSelector().addItemListener(e -> {
+            if (e.getStateChange() == ItemEvent.SELECTED) view.populateEntrySelector(getUserEntries(getSelectedUser().getId()));
+        });
+    }
+
     private void addEntrySelectorListener() {
-        view.getEntrySelector().addActionListener(e -> {
-            showSelectedEntry();
+        view.getEntrySelector().addItemListener(e -> {
+            if (e.getStateChange() == ItemEvent.SELECTED) showSelectedEntry();
         });
     }
 
