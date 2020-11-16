@@ -13,6 +13,7 @@ public class Controller {
         fileIO = f;
         fileName = "entrymanager.obj";
         addAddListener();
+        addSaveToFileListener();
         view.populateComboBox(entryManager.getUsers());
     }
 
@@ -31,6 +32,12 @@ public class Controller {
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    private void addSaveToFileListener() {
+        view.getAddButton().addActionListener(e -> {
+            writeEntryManagerToFile();
+        });
     }
 
     public EntryManager readEntryManagerFile() {

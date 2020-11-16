@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class View {
@@ -7,6 +9,7 @@ public class View {
     private JTextArea entryContent;
     private JButton addButton;
     private JComboBox<User> userSelector;
+    private JButton saveToFileButton;
 
     public View(String title) {
         JFrame frame = new JFrame(title);
@@ -28,6 +31,10 @@ public class View {
 
     public JButton getAddButton() {
         return addButton;
+    }
+
+    public JButton getSaveToFileButton() {
+        return saveToFileButton;
     }
 
     public JPanel getViewPanel() {

@@ -46,11 +46,14 @@
           <text value="Entry content"/>
         </properties>
       </component>
-      <vspacer id="c9746">
+      <component id="12030" class="javax.swing.JButton" binding="saveToFileButton" default-binding="true">
         <constraints>
-          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
-      </vspacer>
+        <properties>
+          <text value="Save to file"/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>
