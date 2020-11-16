@@ -16,8 +16,8 @@ public class EntryManager implements Serializable {
         return entries;
     }
 
-    public Entry createEntry(String content, User author) {
-        Entry entry = new Entry(content, author);
+    public Entry createEntry(String title, String content, User author) {
+        Entry entry = new Entry(title, content, author);
         entries.add(entry);
         return entry;
     }

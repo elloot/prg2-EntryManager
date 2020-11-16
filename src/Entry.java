@@ -8,8 +8,10 @@ public class Entry implements Serializable {
     private Timestamp updatedAt;
     private final User author;
     private final ArrayList<Edit> edits;
+    private final String title;
 
-    public Entry(String content, User author) {
+    public Entry(String title, String content, User author) {
+        this.title = title;
         this.content = content;
         this.author = author;
         this.createdAt = EntryManager.getCurrentTime();
@@ -55,6 +57,6 @@ public class Entry implements Serializable {
 
     @Override
     public String toString() {
-        return "" + content + "\nAuthor: " +  author;
+        return title;
     }
 }

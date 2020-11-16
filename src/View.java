@@ -9,6 +9,7 @@ public class View {
     private JComboBox<User> userSelector;
     private JButton saveToFileButton;
     private JComboBox<Entry> entrySelector;
+    private JTextArea entryTitle;
 
     public View(String title) {
         JFrame frame = new JFrame(title);
@@ -26,6 +27,10 @@ public class View {
 
     public String getEntryContent() {
         return entryContent.getText();
+    }
+
+    public String getEntryTitle() {
+        return entryTitle.getText();
     }
 
     public JButton getAddButton() {
