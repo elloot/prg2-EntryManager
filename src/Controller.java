@@ -25,6 +25,13 @@ public class Controller {
         addAddListener();
         view.populateUserSelector(entryManager.getUsers());
         view.populateEntrySelector(getUserEntries(getSelectedUser().getId()));
+        showSelectedEntry();
+    }
+
+    private void showSelectedEntry() {
+        Entry selectedEntry = getSelectedEntry();
+        view.setEntryContent(selectedEntry.getContent());
+        view.setEntryTitle(selectedEntry.getTitle());
     }
 
     private Entry getUserEntry(int userID, int index) {
@@ -72,6 +79,11 @@ public class Controller {
     private User getSelectedUser() {
         JComboBox<User> userSelector = view.getUserSelector();
         return (User) userSelector.getSelectedItem();
+    }
+
+    private Entry getSelectedEntry() {
+        JComboBox<Entry> entrySelector = view.getEntrySelector();
+        return (Entry) entrySelector.getSelectedItem();
     }
 
     private void addAddListener() {

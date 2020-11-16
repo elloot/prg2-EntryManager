@@ -25,12 +25,24 @@ public class View {
         return userSelector;
     }
 
+    public JComboBox<Entry> getEntrySelector() {
+        return entrySelector;
+    }
+
     public String getEntryContent() {
         return entryContent.getText();
     }
 
+    public void setEntryContent(String content) {
+        this.entryContent.setText(content);
+    }
+
     public String getEntryTitle() {
         return entryTitle.getText();
+    }
+
+    public void setEntryTitle(String title) {
+        this.entryTitle.setText(title);
     }
 
     public JButton getAddButton() {
