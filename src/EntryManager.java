@@ -10,6 +10,7 @@ public class EntryManager implements Serializable {
         users = new ArrayList<>();
         entries = new ArrayList<>();
         createUser("default", 0, "default", "default");
+        createUser("Elliot", 1, "elliotsmail", "bra lösen");
     }
 
     public ArrayList<Entry> getEntries() {
