@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
-public class Entry {
+public class Entry implements Serializable {
     private String content;
     private final Timestamp createdAt;
     private Timestamp updatedAt;

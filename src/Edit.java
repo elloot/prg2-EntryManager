@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class Edit {
+public class Edit implements Serializable {
     private final String content;
     private final Timestamp createdAt;
     private final User author;
