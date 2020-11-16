@@ -23,6 +23,7 @@ public class Controller {
         fileIO = f;
         entryManager = readEntryManagerFile();
         addAddListener();
+        addSaveToFileListener();
         view.populateUserSelector(entryManager.getUsers());
         view.populateEntrySelector(getUserEntries(getSelectedUser().getId()));
         showSelectedEntry();
