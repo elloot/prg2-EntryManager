@@ -5,22 +5,43 @@ public class Controller {
     private EntryManager entryManager;
     private View view;
     private FileIO fileIO;
+    private final String fileName;
 
     public Controller(EntryManager em, View v, FileIO f) {
         entryManager = em;
         view = v;
         fileIO = f;
+        fileName = "entrymanager.obj";
+        addAddListener();
+        view.populateComboBox(entryManager.getUsers());
+    }
+
+    public Controller(View v, FileIO f) {
+        entryManager = readEntryManagerFile();
+        view = v;
+        fileIO = f;
+        fileName = "entrymanager.obj";
         addAddListener();
         view.populateComboBox(entryManager.getUsers());
     }
 
     public void writeEntryManagerToFile() {
         try {
-            fileIO.writeEntryManagerToFile(entryManager);
-            fileIO.readEntryManagerFile();
+            fileIO.writeEntryManagerToFile(entryManager, fileName);
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    public EntryManager readEntryManagerFile() {
+        EntryManager entryManager = null;
+        try {
+            entryManager = fileIO.readEntryManagerFile(fileName);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return entryManager;
     }
 
     private void addAddListener() {
