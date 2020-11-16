@@ -25,6 +25,23 @@ public class Controller {
         view.populateComboBox(entryManager.getUsers());
     }
 
+    private Entry getUserEntry(int userID, int index) {
+        ArrayList<Entry> entries = getUserEntries(userID);
+        return entries.get(index);
+    }
+
+    public ArrayList<Entry> getUserEntries(int userID) {
+        ArrayList<Entry> entries = entryManager.getEntries();
+        ArrayList<Entry> userEntries = new ArrayList<>();
+        for (Entry currentEntry : entries) {
+            if (currentEntry.getAuthor().getId() == userID) {
+                userEntries.add(currentEntry);
+            }
+        }
+
+        return userEntries;
+    }
+
     public void writeEntryManagerToFile() {
         try {
             fileIO.writeEntryManagerToFile(entryManager, fileName);
