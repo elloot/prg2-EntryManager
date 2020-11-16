@@ -1,9 +1,9 @@
 import java.io.Serializable;
 
 public class User implements Serializable {
-    private String name;
-    private int id;
-    private String email;
+    private final String name;
+    private final int id;
+    private final String email;
     private String password;
 
     public User(String name, int id, String email, String password) {
