@@ -64,6 +64,7 @@ public class View {
     }
 
     public void populateEntrySelector(ArrayList<Entry> entries) {
+        entrySelector.removeAllItems();
         for (Entry entry : entries) {
             entrySelector.addItem(entry);
         }
