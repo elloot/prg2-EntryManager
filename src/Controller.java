@@ -15,7 +15,7 @@ public class Controller {
         addAddListener();
         addSaveToFileListener();
         view.populateUserSelector(entryManager.getUsers());
-        view.populateEntrySelector(getUserEntries(getActiveUser().getId()));
+        view.populateEntrySelector(getUserEntries(getSelectedUser().getId()));
     }
 
     public Controller(View v, FileIO f) {
@@ -24,7 +24,7 @@ public class Controller {
         entryManager = readEntryManagerFile();
         addAddListener();
         view.populateUserSelector(entryManager.getUsers());
-        view.populateEntrySelector(getUserEntries(getActiveUser().getId()));
+        view.populateEntrySelector(getUserEntries(getSelectedUser().getId()));
     }
 
     private Entry getUserEntry(int userID, int index) {
@@ -69,14 +69,14 @@ public class Controller {
         return entryManager;
     }
 
-    private User getActiveUser() {
+    private User getSelectedUser() {
         JComboBox<User> userSelector = view.getUserSelector();
         return (User) userSelector.getSelectedItem();
     }
 
     private void addAddListener() {
         view.getAddButton().addActionListener(e -> {
-            User author = getActiveUser();
+            User author = getSelectedUser();
             System.out.println(addEntry(view.getEntryTitle(), view.getEntryContent(), author));
         });
     }
