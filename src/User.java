@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class User {
+public class User implements Serializable {
     private String name;
     private int id;
     private String email;

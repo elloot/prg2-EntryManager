@@ -1,14 +1,26 @@
 import javax.swing.*;
+import java.io.IOException;
 
 public class Controller {
     private EntryManager entryManager;
     private View view;
+    private FileIO fileIO;
 
-    public Controller(EntryManager em, View v) {
+    public Controller(EntryManager em, View v, FileIO f) {
         entryManager = em;
         view = v;
+        fileIO = f;
         addAddListener();
         view.populateComboBox(entryManager.getUsers());
+    }
+
+    public void writeEntryManagerToFile() {
+        try {
+            fileIO.writeEntryManagerToFile(entryManager);
+            fileIO.readEntryManagerFile();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     private void addAddListener() {

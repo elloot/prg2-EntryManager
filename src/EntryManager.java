@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
-public class EntryManager {
+public class EntryManager implements Serializable {
     private ArrayList<Entry> entries;
     private ArrayList<User> users;
 
