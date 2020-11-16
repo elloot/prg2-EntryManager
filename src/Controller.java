@@ -15,6 +15,7 @@ public class Controller {
         addAddListener();
         addSaveToFileListener();
         view.populateUserSelector(entryManager.getUsers());
+        view.populateEntrySelector(getUserEntries(getActiveUser().getId()));
     }
 
     public Controller(View v, FileIO f) {
@@ -23,6 +24,7 @@ public class Controller {
         entryManager = readEntryManagerFile();
         addAddListener();
         view.populateUserSelector(entryManager.getUsers());
+        view.populateEntrySelector(getUserEntries(getActiveUser().getId()));
     }
 
     private Entry getUserEntry(int userID, int index) {

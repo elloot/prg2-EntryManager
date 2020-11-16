@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class View {
@@ -10,7 +8,7 @@ public class View {
     private JButton addButton;
     private JComboBox<User> userSelector;
     private JButton saveToFileButton;
-    private JComboBox entrySelector;
+    private JComboBox<Entry> entrySelector;
 
     public View(String title) {
         JFrame frame = new JFrame(title);
@@ -45,6 +43,12 @@ public class View {
     public void populateUserSelector(ArrayList<User> users) {
         for (User user : users) {
             userSelector.addItem(user);
+        }
+    }
+
+    public void populateEntrySelector(ArrayList<Entry> entries) {
+        for (Entry entry : entries) {
+            entrySelector.addItem(entry);
         }
     }
 }
