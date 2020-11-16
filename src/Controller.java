@@ -67,10 +67,14 @@ public class Controller {
         return entryManager;
     }
 
+    private User getActiveUser() {
+        JComboBox<User> userSelector = view.getUserSelector();
+        return (User) userSelector.getSelectedItem();
+    }
+
     private void addAddListener() {
         view.getAddButton().addActionListener(e -> {
-            JComboBox<User> box = view.getUserSelector();
-            User author = (User) box.getSelectedItem();
+            User author = getActiveUser();
             System.out.println(addEntry(view.getEntryContent(), author));
         });
     }
