@@ -1,32 +1,23 @@
 import java.io.*;
 
 public class FileIO {
-    String fileName;
-
-    public FileIO(String fileName) {
-        this.fileName = fileName;
-    }
-
-    public static void main(String[] args) {
-
-    }
-
-    public void writeEntryManagerToFile(EntryManager entryManager) throws IOException, ClassNotFoundException {
+    public void writeEntryManagerToFile(EntryManager entryManager, String fileName) throws IOException, ClassNotFoundException {
         ObjectOutputStream out = null;
 
         try {
-            out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(this.fileName)));
+            out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(fileName)));
             out.writeObject(entryManager);
         } finally {
             out.close();
         }
     }
 
-    public EntryManager readEntryManagerFile() throws IOException, ClassNotFoundException {
+    public EntryManager readEntryManagerFile(String fileName) throws IOException, ClassNotFoundException {
         ObjectInputStream in = null;
         EntryManager entryManager;
+
         try {
-            in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(this.fileName)));
+            in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(fileName)));
             entryManager = (EntryManager) in.readObject();
         } finally {
             in.close();
