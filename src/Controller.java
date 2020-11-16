@@ -2,9 +2,9 @@ import javax.swing.*;
 import java.io.IOException;
 
 public class Controller {
-    private EntryManager entryManager;
-    private View view;
-    private FileIO fileIO;
+    private final EntryManager entryManager;
+    private final View view;
+    private final FileIO fileIO;
     private final String fileName;
 
     public Controller(EntryManager em, View v, FileIO f) {
