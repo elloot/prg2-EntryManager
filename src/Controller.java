@@ -26,7 +26,14 @@ public class Controller {
         addSaveToFileListener();
         view.populateUserSelector(entryManager.getUsers());
         view.populateEntrySelector(getUserEntries(getSelectedUser().getId()));
+        addEntrySelectorListener();
         showSelectedEntry();
+    }
+
+    private void addEntrySelectorListener() {
+        view.getEntrySelector().addActionListener(e -> {
+            showSelectedEntry();
+        });
     }
 
     private void showSelectedEntry() {
