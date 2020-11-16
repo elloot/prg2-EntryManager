@@ -1,27 +1,26 @@
 import javax.swing.*;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Controller {
     private final EntryManager entryManager;
     private final View view;
     private final FileIO fileIO;
-    private final String fileName;
+    private final String fileName = "entrymanager.obj";
 
     public Controller(EntryManager em, View v, FileIO f) {
-        entryManager = em;
         view = v;
         fileIO = f;
-        fileName = "entrymanager.obj";
+        entryManager = em;
         addAddListener();
         addSaveToFileListener();
         view.populateComboBox(entryManager.getUsers());
     }
 
     public Controller(View v, FileIO f) {
-        entryManager = readEntryManagerFile();
         view = v;
         fileIO = f;
-        fileName = "entrymanager.obj";
+        entryManager = readEntryManagerFile();
         addAddListener();
         view.populateComboBox(entryManager.getUsers());
     }
