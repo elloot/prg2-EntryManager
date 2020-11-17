@@ -12,6 +12,31 @@ public class FileIO {
         }
     }
 
+    public void writeToTxtFile(String data, String fileName) throws IOException {
+        DataOutputStream out = null;
+
+        try {
+            out = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(fileName)));
+            out.writeUTF(data);
+        } finally {
+            out.close();
+        }
+    }
+
+    public String readTxtFile(String fileName) throws IOException {
+        DataInputStream in = null;
+        String data = null;
+
+        try {
+            in = new DataInputStream(new BufferedInputStream(new FileInputStream(fileName)));
+            data = in.readUTF();
+        } finally {
+            in.close();
+        }
+
+        return data;
+    }
+
     public EntryManager readEntryManagerFile(String fileName) throws IOException, ClassNotFoundException {
         ObjectInputStream in = null;
         EntryManager entryManager;
