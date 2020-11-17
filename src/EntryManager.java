@@ -5,12 +5,14 @@ import java.util.ArrayList;
 public class EntryManager implements Serializable {
     private final ArrayList<Entry> entries;
     private final ArrayList<User> users;
+    private int userIDCount;
 
     public EntryManager() {
         users = new ArrayList<>();
         entries = new ArrayList<>();
-        createUser("default", 0, "default", "default");
-        createUser("Elliot", 1, "elliotsmail", "bra lösen");
+        userIDCount = 0;
+        createUser("default", "default", "default");
+        createUser("Elliot", "elliotsmail", "bra lösen");
     }
 
     public ArrayList<Entry> getEntries() {
@@ -31,7 +33,11 @@ public class EntryManager implements Serializable {
         return new Timestamp(System.currentTimeMillis());
     }
 
-    public void createUser(String name, int id, String email, String password) {
-        users.add(new User(name, id, email, password));
+    public User createUser(String name, String email, String password) {
+        int id = userIDCount + 1;
+        userIDCount++;
+        User user = new User(name, id, email, password);
+        users.add(user);
+        return user;
     }
 }
