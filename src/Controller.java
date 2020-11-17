@@ -13,21 +13,27 @@ public class Controller {
         view = v;
         fileIO = f;
         entryManager = em;
-        addAddListener();
-        addSaveToFileListener();
+        // Add entries and users to JComboBox in view
         view.populateUserSelector(entryManager.getUsers());
         view.populateEntrySelector(getUserEntries(getSelectedUser().getId()));
+        // Add listeners to view
+        addAddListener();
+        addSaveToFileListener();
+        addUserSelectorListener();
+        addEntrySelectorListener();
     }
 
     public Controller(View v, FileIO f) {
         view = v;
         fileIO = f;
         entryManager = readEntryManagerFile();
+        // Add entries and users to JComboBox in view
+        view.populateUserSelector(entryManager.getUsers());
+        view.populateEntrySelector(getUserEntries(getSelectedUser().getId()));
+        // Add listeners to view
         addAddListener();
         addSaveToFileListener();
-        view.populateUserSelector(entryManager.getUsers());
         addUserSelectorListener();
-        view.populateEntrySelector(getUserEntries(getSelectedUser().getId()));
         addEntrySelectorListener();
         showSelectedEntry();
     }
