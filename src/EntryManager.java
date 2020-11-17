@@ -12,7 +12,6 @@ public class EntryManager implements Serializable {
         entries = new ArrayList<>();
         userIDCount = 0;
         createUser("default", "default", "default");
-        createUser("Elliot", "elliotsmail", "bra lösen");
     }
 
     public ArrayList<Entry> getEntries() {
