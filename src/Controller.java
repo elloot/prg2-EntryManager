@@ -9,6 +9,9 @@ public class Controller {
     private final FileIO fileIO;
     private final String fileName = "entrymanager.obj";
 
+    // TODO: add method to refresh entry list when adding entries as well as users
+    // TODO: when saving to file, add all entries and users
+
     public Controller(EntryManager em, View v, FileIO f) {
         view = v;
         fileIO = f;
@@ -17,10 +20,7 @@ public class Controller {
         view.populateUserSelector(entryManager.getUsers());
         view.populateEntrySelector(getUserEntries(getSelectedUser().getId()));
         // Add listeners to view
-        addAddListener();
-        addSaveToFileListener();
-        addUserSelectorListener();
-        addEntrySelectorListener();
+        addListeners();
     }
 
     public Controller(View v, FileIO f) {
@@ -31,11 +31,29 @@ public class Controller {
         view.populateUserSelector(entryManager.getUsers());
         view.populateEntrySelector(getUserEntries(getSelectedUser().getId()));
         // Add listeners to view
+        addListeners();
+        if (!getUserEntries(0).isEmpty()) showSelectedEntry();
+    }
+
+    private void addListeners() {
         addAddListener();
         addSaveToFileListener();
         addUserSelectorListener();
         addEntrySelectorListener();
-        showSelectedEntry();
+        addAddUserListener();
+    }
+
+    private void addCreateUserListener(AddUserView addUserView) {
+        addUserView.getCreateUserButton().addActionListener(e -> {
+            addUser(addUserView.getNameContent(), addUserView.getEmailContent(), addUserView.getPasswordContent());
+        });
+    }
+
+    private void addAddUserListener() {
+        view.getAddUserButton().addActionListener(e -> {
+            AddUserView addUserView = new AddUserView("Add user");
+            addCreateUserListener(addUserView);
+        });
     }
 
     private void addUserSelectorListener() {
@@ -117,5 +135,9 @@ public class Controller {
 
     private Entry addEntry(String title, String content, User author) {
         return entryManager.createEntry(title, content, author);
+    }
+
+    private User addUser(String name, String email, String password) {
+        return entryManager.createUser(name, email, password);
     }
 }
